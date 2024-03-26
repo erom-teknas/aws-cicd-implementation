@@ -1,0 +1,25 @@
+version: 0.2
+run-as: root
+env:
+  parameter-store:
+    DOCKER_USERNAME: /python-flask/docker/username
+    DOCKER_PASSWORD: /python-flask/docker/password
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+      docker: 18
+    commands:
+      - echo "Installing dependencies..."
+    build:
+      commands:
+      on-failure: ABORT
+        - echo Login to docker registry
+        - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        - echo Login completed
+        - echo Build image...
+        - docker build -t $DOCKER_USERNAME/greet-user:latest .
+        - echo Build completed
+        - echo Push image...
+        - docker push $DOCKER_USERNAME/greet-user:latest
+        - echo Push completed
