@@ -11,8 +11,7 @@ phases:
       python: 3.11
     commands:
       - echo "Installing dependencies..."
-      - apt-get update
-      - apt-get install -y git
+      - yum install -y git
   build:
     on-failure: ABORT
     commands:
