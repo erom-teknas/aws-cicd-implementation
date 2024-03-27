@@ -12,7 +12,7 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - yum install -y git
-  pre-build:
+  pre_build:
     on-failure: ABORT
     commands:
       - echo "Get git branches..."
