@@ -18,8 +18,9 @@ phases:
       - docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - echo "Login completed"
       - echo "Build image..."
-      - docker build -t $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER .
+      - B_VERSION=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | awk -F'/' '{print $3}')
+      - docker build -t $DOCKER_USERNAME/greet-user:$B_VERSION.$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
       - echo "Push image..."
-      - docker push $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER
+      - docker push $DOCKER_USERNAME/greet-user:$B_VERSION.$CODEBUILD_BUILD_NUMBER
       - echo "Push completed"
