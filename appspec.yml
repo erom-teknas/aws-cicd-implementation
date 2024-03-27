@@ -3,4 +3,3 @@ os: linux
 hooks:
   ApplicationStart:
     - location: scripts/deploy-greet-user.sh
-      runas: admin
