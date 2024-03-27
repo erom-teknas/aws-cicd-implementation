@@ -9,9 +9,10 @@ phases:
     on-failure: ABORT
     runtime-versions:
       python: 3.11
-      git: latest
     commands:
       - echo "Installing dependencies..."
+      - apt-get update
+      - apt-get install -y git
   build:
     on-failure: ABORT
     commands:
