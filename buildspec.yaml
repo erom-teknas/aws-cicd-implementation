@@ -18,8 +18,7 @@ phases:
       - docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - echo "Login completed"
       - echo "Build image..."
-      - BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-      - echo "$BRANCH_NAME"
+      - echo "$CODEBUILD_WEBHOOK_BASE_REF ++++ $CODEBUILD_WEBHOOK_HEAD_REF ++++ $CODEBUILD_WEBHOOK_TRIGGER"
       - echo "Build version"
       - docker build -t $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
