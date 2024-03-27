@@ -1,9 +1,10 @@
-
 #!/bin/bash
-count=$(docker ps -f NAME=greet-user | grep -v IMAGE | wc -l)
-if [ $count -eq 0 ]
+
+# Check if a container named "greet-user" exists
+if docker ps -a --format '{{.Names}}' | grep -q '^greet-user'
 then
-  echo "No greet-user container found"  
-else
+  # Stop the container named "greet-user" if it exists
   docker stop greet-user
-fi 
+else
+  echo "No greet-user container found or already stopped"
+fi
