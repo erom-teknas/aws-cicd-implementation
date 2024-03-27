@@ -12,6 +12,12 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - yum install -y git
+  pre-build:
+    on-failure: ABORT
+    commands:
+      - echo "Get git branches..."
+      - BRANCH_NAME=$(git branch -a)
+      - echo "Get git branches completed $BRANCH_NAME"
   build:
     on-failure: ABORT
     commands:
@@ -20,11 +26,6 @@ phases:
       - echo "Login completed"
       - echo "Build image..."
       - echo "$CODEBUILD_WEBHOOK_BASE_REF ++++ $CODEBUILD_WEBHOOK_HEAD_REF ++++ $CODEBUILD_WEBHOOK_TRIGGER"
-      - cd $CODEBUILD_SRC_DIR
-      - ls -lrt
-      - BRANCH_NAME=$(git branch -a)
-      - echo "Build version $BRANCH_NAME"
-      - cd -
       - docker build -t $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
       - echo "Push image..."
