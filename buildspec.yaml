@@ -9,6 +9,7 @@ phases:
     on-failure: ABORT
     runtime-versions:
       python: 3.11
+      git: latest
     commands:
       - echo "Installing dependencies..."
   build:
@@ -19,7 +20,8 @@ phases:
       - echo "Login completed"
       - echo "Build image..."
       - echo "$CODEBUILD_WEBHOOK_BASE_REF ++++ $CODEBUILD_WEBHOOK_HEAD_REF ++++ $CODEBUILD_WEBHOOK_TRIGGER"
-      - echo "Build version"
+        BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+      - echo "Build version $BRANCH_NAME"
       - docker build -t $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
       - echo "Push image..."
