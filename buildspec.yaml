@@ -29,8 +29,8 @@ phases:
       - VERSION=$VERSION.$CODEBUILD_BUILD_NUMBER
       - export VERSION
       - echo $VERSION > version.txt
-artifacts:
-  files:
-    - version.txt
-  base-directory: $CODEBUILD_SRC_DIR
+# artifacts:
+#   files:
+#     - version.txt
+#   base-directory: $CODEBUILD_SRC_DIR
 
