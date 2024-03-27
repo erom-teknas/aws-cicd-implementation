@@ -1,5 +1,8 @@
 version: 0.0
 os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/greet-user
 hooks:
   BeforeInstall:
     - location: scripts/install-dependencies.sh
@@ -13,3 +16,7 @@ hooks:
     - location: scripts/deploy-greet-user.sh
       timeout: 300
       runas: root
+      environment:
+        variables:
+          VERSION: #{VERSION}
+

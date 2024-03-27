@@ -14,7 +14,7 @@ phases:
   build:
     on-failure: ABORT
     commands:
-      - echo "Login to docker registry"
+      - echo "Login to docker registry and create new build"
       - docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - echo "Login completed"
       - echo "Build image..."
@@ -26,3 +26,11 @@ phases:
       - echo "Push image..."
       - docker push $DOCKER_USERNAME/greet-user:$VERSION.$CODEBUILD_BUILD_NUMBER
       - echo "Push completed.."
+      - VERSION=$VERSION.$CODEBUILD_BUILD_NUMBER
+      - export VERSION
+      - echo $VERSION > version.txt
+artifacts:
+  files:
+    - version.txt
+  base-directory: $CODEBUILD_SRC_DIR
+
