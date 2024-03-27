@@ -10,8 +10,10 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - echo "Installing dependencies..."
+      - echo "Installing dependencies...."
       - yum install -y git
+      - cd $CODEBUILD_SRC_DIR
+      - git rev-parse --abbrev-ref HEAD
   build:
     on-failure: ABORT
     commands:
