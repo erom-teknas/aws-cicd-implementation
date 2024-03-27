@@ -22,7 +22,7 @@ phases:
       - echo "$CODEBUILD_WEBHOOK_BASE_REF ++++ $CODEBUILD_WEBHOOK_HEAD_REF ++++ $CODEBUILD_WEBHOOK_TRIGGER"
       - cd $CODEBUILD_SRC_DIR
       - ls -lrt
-      - BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+      - BRANCH_NAME=$(git branch -a)
       - echo "Build version $BRANCH_NAME"
       - cd -
       - docker build -t $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER .
