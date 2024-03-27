@@ -23,7 +23,7 @@ phases:
       - VERSION=$(git branch --contains HEAD | grep -v 'detached' | cut -c 3- | cut -d '-' -f1)
       - docker build -t $DOCKER_USERNAME/greet-user:$VERSION.$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
-      - echo "Push image..."
+      - echo "Push image...."
       - docker push $DOCKER_USERNAME/greet-user:$VERSION.$CODEBUILD_BUILD_NUMBER
       - echo "Push completed.."
       - VERSION=$VERSION.$CODEBUILD_BUILD_NUMBER
