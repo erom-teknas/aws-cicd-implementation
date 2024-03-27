@@ -13,7 +13,7 @@ phases:
       - echo "Installing dependencies...."
       - yum install -y git
       - cd $CODEBUILD_SRC_DIR
-      - git symbolic-ref --short HEAD
+      - git branch --contains HEAD | grep -v 'detached' | cut -c 3-
   build:
     on-failure: ABORT
     commands:
