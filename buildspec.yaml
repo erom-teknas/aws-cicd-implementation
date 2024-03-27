@@ -19,7 +19,7 @@ phases:
       - echo "Login completed"
       - echo "Build image..."
       - echo $CODEBUILD_WEBHOOK_HEAD_REF
-      - echo "Build version: $B_VERSION"
+      - echo "Build version"
       - docker build -t $DOCKER_USERNAME/greet-user:$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
       - echo "Push image..."
