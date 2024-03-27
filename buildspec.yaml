@@ -21,7 +21,7 @@ phases:
       - echo "Build image..."
       - echo "$CODEBUILD_WEBHOOK_BASE_REF ++++ $CODEBUILD_WEBHOOK_HEAD_REF ++++ $CODEBUILD_WEBHOOK_TRIGGER +++ $CODEBUILD_SOURCE_VERSION"
       - cd $CODEBUILD_SRC_DIR
-      - VERSION=$(git branch --contains HEAD | grep -v 'detached' | cut -c 3- | cut -d '-' 1)
+      - VERSION=$(git branch --contains HEAD | grep -v 'detached' | cut -c 3- | cut -d '-' -f1)
       - docker build -t $DOCKER_USERNAME/greet-user:$VERSION.$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
       - echo "Push image..."
