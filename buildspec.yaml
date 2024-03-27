@@ -1,5 +1,4 @@
 version: 0.2
-run-as: root
 env:
   parameter-store:
     DOCKER_USERNAME: /python-flask/docker/username
