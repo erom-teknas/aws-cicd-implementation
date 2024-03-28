@@ -4,6 +4,7 @@ SCRIPT_DIR="$(dirname "$0")"
 # Print the directory
 echo "Script directory: $SCRIPT_DIR"
 cd $SCRIPT_DIR
+cat ../version.txt
 VERSION=$(cat ../version.txt | grep VERSION | cut -d '=' -f2)
 export VERSION=$VERSION
 echo "Building version $VERSION"
