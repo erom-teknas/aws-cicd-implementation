@@ -29,13 +29,14 @@ Before getting started, make sure you have the following prerequisites installed
 Follow the step-by-step instructions in the [Setup Guide](setup.md) to set up the CI/CD pipeline for your Python Flask application.
 
 ## Directory Structure 📁
+```
 ├── app/ # Source code of the Python Flask application
 ├── scripts/ # Helper scripts for CI/CD setup and deployment
 ├── Dockerfile # Dockerfile for building the Docker image
 ├── buildspec.yml # CodeBuild build specification file
 ├── appspec.yml # CodeDeploy Application Specification file
 └── README.md # Detailed documentation and setup instructions
-
+```
 ## Resources 📚
 
 - [AWS CodeBuild Documentation](https://docs.aws.amazon.com/codebuild/)
