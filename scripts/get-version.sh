@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Current directory"
+echo "Current directory.."
 ls -lart
 pwd
 echo "Parent directory"
