@@ -4,8 +4,7 @@ SCRIPT_DIR="$(dirname "$0")"
 # Print the directory
 echo "Script directory: $SCRIPT_DIR"
 cd $SCRIPT_DIR
-cat ../version.txt
-VERSION=$(cat ../version.txt | grep VERSION | cut -d '=' -f2)
+VERSION=$(cat ../version.txt | grep VERSION)
 export VERSION=$VERSION
 echo "Building version $VERSION"
 docker pull teknas09/greet-user:$VERSION
