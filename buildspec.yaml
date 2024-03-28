@@ -1,5 +1,4 @@
 version: 0.2
-run-as: root
 env:
   parameter-store:
     DOCKER_USERNAME: /python-flask/docker/username
@@ -10,18 +9,27 @@ phases:
     runtime-versions:
       python: 3.11
     commands:
-      - echo "Installing dependencies..."
+      - echo "Installing dependencies...."
+      - yum install -y git
   build:
     on-failure: ABORT
     commands:
-      - echo "Login to docker registry"
+      - echo "Login to docker registry and create new build"
       - docker login docker.io -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - echo "Login completed"
       - echo "Build image..."
-      - B_VERSION=$(echo $CODEBUILD_WEBHOOK_HEAD_REF | awk -F'/' '{print $3}')
-      - echo "Build version: $B_VERSION"
-      - docker build -t $DOCKER_USERNAME/greet-user:$B_VERSION.$CODEBUILD_BUILD_NUMBER .
+      - echo "$CODEBUILD_WEBHOOK_BASE_REF ++++ $CODEBUILD_WEBHOOK_HEAD_REF ++++ $CODEBUILD_WEBHOOK_TRIGGER +++ $CODEBUILD_SOURCE_VERSION"
+      - cd $CODEBUILD_SRC_DIR/app
+      - VERSION=$(git branch --contains HEAD | grep -v 'detached' | cut -c 3- | cut -d '-' -f1)
+      - docker build -t $DOCKER_USERNAME/greet-user:$VERSION.$CODEBUILD_BUILD_NUMBER .
       - echo "Build completed"
-      - echo "Push image..."
-      - docker push $DOCKER_USERNAME/greet-user:$B_VERSION.$CODEBUILD_BUILD_NUMBER
-      - echo "Push completed"
+      - echo "Push image......"
+      - docker push $DOCKER_USERNAME/greet-user:$VERSION.$CODEBUILD_BUILD_NUMBER
+      - echo "Push completed...."
+      - VERSION=$VERSION.$CODEBUILD_BUILD_NUMBER
+      - export VERSION
+      - echo $VERSION > $CODEBUILD_SRC_DIR/version.txt
+artifacts:
+  files:
+    - '**/*'
+  base-directory: $CODEBUILD_SRC_DIR
