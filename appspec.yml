@@ -20,7 +20,3 @@ hooks:
     - location: scripts/deploy-greet-user.sh
       timeout: 300
       runas: root
-      environment:
-        variables:
-          VERSION: #{VERSION}
-
