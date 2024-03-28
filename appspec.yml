@@ -9,7 +9,7 @@ hooks:
       timeout: 300
       runas: root
   AfterInstall:
-    - location: scripts/change-permissions.sh
+    - location: scripts/get-version.sh
       timeout: 300
       runas: root
   ApplicationStop:
