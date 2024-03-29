@@ -1,6 +1,5 @@
 # CI/CD Pipeline Setup Guide 🚀
 
-## CICD diagrams
 ![alt text](images/cicd-aws.png)
 
 ## Overview
