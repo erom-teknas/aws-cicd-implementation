@@ -1,5 +1,8 @@
 # CI/CD Pipeline Setup Guide 🚀
 
+## CICD diagrams
+![alt text](images/cicd-aws.png)
+
 ## Overview
 This guide will walk you through setting up a Continuous Integration/Continuous Deployment (CI/CD) pipeline using AWS services for a Python Flask web application hosted on GitHub. The pipeline will automatically build and deploy the application to AWS EC2 instances via AWS CodeDeploy whenever changes are made to branches matching the pattern `digit.digit-rc`.
 
