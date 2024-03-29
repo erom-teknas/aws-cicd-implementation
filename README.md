@@ -8,9 +8,9 @@ This project provides a step-by-step guide and configuration files to set up a c
 
 ## Features ✨
 
-- Automates the build, test, and deployment process for your Python Flask application.
+- Automates the build and deployment process for your Python Flask application.
 - Utilizes Docker for containerization, ensuring consistency across different environments.
-- Uses AWS CodeBuild for building the Docker image and running tests.
+- Uses AWS CodeBuild for building the Docker image.
 - Leverages AWS CodeDeploy for deploying the Docker container to EC2 instances.
 - Orchestrates the entire CI/CD workflow with AWS CodePipeline.
 - Easily customizable and extensible to suit your project's needs.
