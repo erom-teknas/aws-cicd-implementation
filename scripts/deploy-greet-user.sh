@@ -2,7 +2,7 @@
 echo "Current directory.."
 SCRIPT_DIR="$(dirname "$0")"
 # Print the directory
-echo "Script directory: $SCRIPT_DIR"
+echo "Script directory:- $SCRIPT_DIR"
 cd $SCRIPT_DIR
 VERSION=$(cat ../version.txt)
 echo "Building version $VERSION"
