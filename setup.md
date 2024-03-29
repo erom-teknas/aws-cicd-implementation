@@ -8,8 +8,7 @@ GitHub repository with the Python Flask web application.
 Project Structure
 Your project structure should look like this:
 
-css```
-Copy code
+```css
 your-repo/
 │
 ├── app/
